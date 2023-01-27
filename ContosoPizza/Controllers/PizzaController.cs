@@ -24,9 +24,36 @@ public class PizzaController : ControllerBase {
 
         return pizza;
     }
-    //POST action -- read?
+    //POST action -- read? 201 CreatedAtAction, 400 BadRequest body object invalid
+    [HttpPost]
+    public IActionResult Create(Pizza pizza) {
+        PizzaService.Add(pizza);
+        return CreatedAtAction(nameof(Get), new { id = pizza.Id }, pizza);
+    }
+    //PUT action, 204 NoContent, 400 BadRequest either id mismatch or invalid body object
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, Pizza pizza) {
+        if (id != pizza.Id)
+            return BadRequest();
 
-    //PUT action
+        var existingPizza = PizzaService.Get(id);
+        if(existingPizza is null)
+            return NotFound();
 
+        PizzaService.Update(pizza);
+
+        return NoContent();
+    }
     //DELETE action
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id) {
+        var pizza = PizzaService.Get(id);
+
+        if(pizza is null)
+            return NotFound();
+
+        PizzaService.Delete(id);
+
+        return NoContent();
+    }
 }
