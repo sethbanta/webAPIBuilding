@@ -35,6 +35,10 @@ public class PizzaController : ControllerBase {
         
         return pizza;
     }
+
+    [HttpGet("{isGlutenFreeInput:bool}")]
+    public ActionResult<List<Pizza?>> GetAllByGluten(bool isGlutenFreeInput) => PizzaService.GetAllByGluten(isGlutenFreeInput);
+
     //POST action -- read? 201 CreatedAtAction, 400 BadRequest body object invalid
     [HttpPost]
     public IActionResult Create(Pizza pizza) {
