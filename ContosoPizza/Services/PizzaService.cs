@@ -24,7 +24,6 @@ public static class PizzaService {
 
     public static List<Pizza?> GetAllByGluten(bool input) {
         bool isTrue = input;
-        Console.WriteLine(isTrue);
         //clean the list
         BooleanPizzas.Clear();
         //grab new list
