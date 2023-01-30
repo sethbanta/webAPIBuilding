@@ -25,3 +25,4 @@ C:\Users\Seth\Documents\apilearning\apilearningcsharp\webAPIBuilding\ContosoPizz
 C:\Users\Seth\Documents\apilearning\apilearningcsharp\webAPIBuilding\ContosoPizza\obj\Debug\net6.0\ContosoPizza.pdb
 C:\Users\Seth\Documents\apilearning\apilearningcsharp\webAPIBuilding\ContosoPizza\obj\Debug\net6.0\ContosoPizza.genruntimeconfig.cache
 C:\Users\Seth\Documents\apilearning\apilearningcsharp\webAPIBuilding\ContosoPizza\obj\Debug\net6.0\ref\ContosoPizza.dll
+C:\Users\Seth\Documents\apilearning\apilearningcsharp\webAPIBuilding\ContosoPizza\bin\Debug\net6.0\SavedList.json
