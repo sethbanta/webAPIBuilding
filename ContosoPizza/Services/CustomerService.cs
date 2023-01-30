@@ -2,7 +2,7 @@ using ContosoPizza.Models;
 
 namespace ContosoPizza.Services;
 
-public class CustomerService {
+public static class CustomerService {
     //customer list
     static List<Customer> CustomerList { get; }
     
@@ -20,6 +20,8 @@ public class CustomerService {
     //Get all customers
     public static List<Customer> GetAllCustomers() => CustomerList;
     public static Customer? GetCustomer(string name) => CustomerList.FirstOrDefault(c => c.Name == name);
+
+    public static Customer? GetCustomer(int number) => CustomerList.FirstOrDefault(c => c.PhoneNumber == number);
     //UPDATE
     public static void Update(Customer customer) {
         //find which customer is being updated

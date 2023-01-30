@@ -17,6 +17,9 @@ public class CustomerController : ControllerBase {
     public ActionResult<List<Customer>> GetAll() => CustomerService.GetAllCustomers();
     [HttpGet("{name}")]
     public ActionResult<Customer?> Get(string name) => CustomerService.GetCustomer(name);
+
+    [HttpGet("{number:int}")]
+    public ActionResult<Customer?> Get(int number) => CustomerService.GetCustomer(number);
     //PUT
     [HttpPut("{name}")]
     public IActionResult Update(string name, Customer customer) {
