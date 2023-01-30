@@ -4,11 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ContosoPizza.Controllers;
 
+
+
 [ApiController]
 [Route("[controller]")]
 public class CustomerController : ControllerBase {
     public CustomerController() {
-
     }
 
     //GET
@@ -23,15 +24,15 @@ public class CustomerController : ControllerBase {
     //PUT
     [HttpPut("{name}")]
     public IActionResult Update(string name, Customer customer) {
-        if(name != customer.Name) {
-            return BadRequest();
-        }
-        var existingCustomer = Get(name);
-        if(existingCustomer is null) {
-            return NotFound();
-        }
-        CustomerService.Update(customer);
-        return NoContent();
+            if(name != customer.Name) {
+                return BadRequest();
+            }
+            var existingCustomer = Get(name);
+            if(existingCustomer is null) {
+                return NotFound();
+            }
+            CustomerService.Update(customer);
+            return NoContent();
     }
 
     [HttpPut("{number:int}")]
