@@ -6,6 +6,7 @@ public static class CustomerService {
     //customer list
     static List<Customer> CustomerList { get; }
     static string? authToken;
+    static string? currentToken;
 
     static CustomerService() {
         //create default list
@@ -16,11 +17,13 @@ public static class CustomerService {
 
         var allChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";  
         var random = new Random();  
-        //Create a token for this session
+        //Create a master token for this session
         var resultToken = new string(  
         Enumerable.Repeat(allChar , 8)  
         .Select(token => token[random.Next(token.Length)]).ToArray());
         authToken = resultToken.ToString();
+        //Generate a random current token
+        currentToken = GenerateToken();
     }
 
     //CREATE
@@ -33,7 +36,7 @@ public static class CustomerService {
     public static Customer? GetCustomer(int number) => CustomerList.FirstOrDefault(c => c.PhoneNumber == number);
     //UPDATE
     public static void Update(Customer customer) {
-        string token = GetToken(authToken);
+        string token = GetToken(currentToken);
         if (token == "CEO" || token == "Manager") {
             //find which customer is being updated
             var index = CustomerList.FindIndex(c => c.PhoneNumber == customer.PhoneNumber);
@@ -50,7 +53,7 @@ public static class CustomerService {
     }
 
     public static void UpdateByNumber(Customer customer) {
-        string token = GetToken(authToken);
+        string token = GetToken(currentToken);
         if (token == "CEO" || token == "Manager") {
             //In the put method itself we already check if they entered an existing customer
             var index = CustomerList.FindIndex(c => c.Name == customer.Name);
@@ -68,7 +71,7 @@ public static class CustomerService {
     }
     //DELETE
     public static void Delete(Customer customer) {
-        string token = GetToken(authToken);
+        string token = GetToken(currentToken);
         if (token == "CEO" || token == "Manager") {
             //find which customer is being deleted
             var index = CustomerList.FindIndex(c => c.PhoneNumber == customer.PhoneNumber);
@@ -101,5 +104,9 @@ public static class CustomerService {
         .Select(token => token[random.Next(token.Length)]).ToArray());
         tempToken = resultToken.ToString();
         return tempToken;
+    }
+
+    public static void SetToken() {
+        currentToken = authToken;
     }
 }
