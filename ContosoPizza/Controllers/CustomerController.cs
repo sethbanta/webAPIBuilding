@@ -64,16 +64,17 @@ public class CustomerController : ControllerBase {
             //define our bucket
             string bucketName = "seth_bucket_test";
             //define what we are grabbing out of the bucket
-            string objectName = "quickstart-folder/ContosoPizza/SavedList.json";
+            string objectName = "SavedList.json";
             //local file path for our data to be saved
             string localPath = "Grabbed.json";
             var fileStream = System.IO.File.Create("Grabbed.json");
-
+            fileStream.Close();
             //create a storage client to provide operations to google cloud
             var storageClient = StorageClient.Create();
             //use our output file in order to download the object from the bucket
             using var outputFile = System.IO.File.OpenWrite(localPath);
             storageClient.DownloadObject(bucketName, objectName, outputFile);
+
             return NoContent();
         }
         else if (input == uploadGuid) {
