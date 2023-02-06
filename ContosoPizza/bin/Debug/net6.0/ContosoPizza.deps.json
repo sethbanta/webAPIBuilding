@@ -8,18 +8,125 @@
     ".NETCoreApp,Version=v6.0": {
       "ContosoPizza/1.0.0": {
         "dependencies": {
+          "Google.Apis": "1.59.0",
+          "Google.Apis.Auth": "1.59.0",
+          "Google.Cloud.Storage.V1": "4.2.0",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
           "ContosoPizza.dll": {}
         }
       },
+      "Google.Api.Gax/4.3.0": {
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
+          "Newtonsoft.Json": "13.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Google.Api.Gax.dll": {
+            "assemblyVersion": "4.3.0.0",
+            "fileVersion": "4.3.0.0"
+          }
+        }
+      },
+      "Google.Api.Gax.Rest/4.3.0": {
+        "dependencies": {
+          "Google.Api.Gax": "4.3.0",
+          "Google.Apis.Auth": "1.59.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Google.Api.Gax.Rest.dll": {
+            "assemblyVersion": "4.3.0.0",
+            "fileVersion": "4.3.0.0"
+          }
+        }
+      },
+      "Google.Apis/1.59.0": {
+        "dependencies": {
+          "Google.Apis.Core": "1.59.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.dll": {
+            "assemblyVersion": "1.59.0.0",
+            "fileVersion": "1.59.0.0"
+          }
+        }
+      },
+      "Google.Apis.Auth/1.59.0": {
+        "dependencies": {
+          "Google.Apis": "1.59.0",
+          "Google.Apis.Core": "1.59.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Auth.PlatformServices.dll": {
+            "assemblyVersion": "1.59.0.0",
+            "fileVersion": "1.59.0.0"
+          },
+          "lib/netstandard2.0/Google.Apis.Auth.dll": {
+            "assemblyVersion": "1.59.0.0",
+            "fileVersion": "1.59.0.0"
+          }
+        }
+      },
+      "Google.Apis.Core/1.59.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Core.dll": {
+            "assemblyVersion": "1.59.0.0",
+            "fileVersion": "1.59.0.0"
+          }
+        }
+      },
+      "Google.Apis.Storage.v1/1.59.0.2742": {
+        "dependencies": {
+          "Google.Apis": "1.59.0",
+          "Google.Apis.Auth": "1.59.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Storage.v1.dll": {
+            "assemblyVersion": "1.59.0.2742",
+            "fileVersion": "1.59.0.2742"
+          }
+        }
+      },
+      "Google.Cloud.Storage.V1/4.2.0": {
+        "dependencies": {
+          "Google.Api.Gax.Rest": "4.3.0",
+          "Google.Apis.Storage.v1": "1.59.0.2742"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Google.Cloud.Storage.V1.dll": {
+            "assemblyVersion": "4.2.0.0",
+            "fileVersion": "4.2.0.0"
+          }
+        }
+      },
+      "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
       "Microsoft.Extensions.ApiDescription.Server/3.0.0": {},
+      "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.0": {},
       "Microsoft.OpenApi/1.2.3": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
             "assemblyVersion": "1.2.3.0",
             "fileVersion": "1.2.3.0"
+          }
+        }
+      },
+      "Newtonsoft.Json/13.0.2": {
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.2.27524"
           }
         }
       },
@@ -69,6 +176,62 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Google.Api.Gax/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gLJt1aHvLtU9jXlAavEUqF5RaobdgYXA+0b+gkhc0/pIylSztv5dK9Q7Uq+IyMXFzLMFkSEI++4DFeyYjuR1Bg==",
+      "path": "google.api.gax/4.3.0",
+      "hashPath": "google.api.gax.4.3.0.nupkg.sha512"
+    },
+    "Google.Api.Gax.Rest/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7oNr9ZgovpbNyXFWayzFSWkWgcm3QfRh1smHMxQ5srf4ZPSu72U24mWpRVo2i1Ub5Y/vjg1na+EFBjIz3NPmtQ==",
+      "path": "google.api.gax.rest/4.3.0",
+      "hashPath": "google.api.gax.rest.4.3.0.nupkg.sha512"
+    },
+    "Google.Apis/1.59.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1RJ9tY4tkm2M5IXGLHtJCxx+TLYujJ1mxn15l1ZrQXdR9O2fAYY/l8j2p53ZJJFVTybo5XIM4FuCJyW8wVcIsw==",
+      "path": "google.apis/1.59.0",
+      "hashPath": "google.apis.1.59.0.nupkg.sha512"
+    },
+    "Google.Apis.Auth/1.59.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zPZoEwf+Fi26YUAfN/HUyhThPneUQFwtT+RJHLAEfTm1CpPu4nCWDP0Hwx796o57WxvVrffzj0bsjBHsdFHDWg==",
+      "path": "google.apis.auth/1.59.0",
+      "hashPath": "google.apis.auth.1.59.0.nupkg.sha512"
+    },
+    "Google.Apis.Core/1.59.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LouWN5JzAJnOVbK3bLTX9WzIppggO1kE8u8PNe5fTLMLVzGzjqpDcbtJc15tGgUHzUVSZaSOdLWWegjH57fluw==",
+      "path": "google.apis.core/1.59.0",
+      "hashPath": "google.apis.core.1.59.0.nupkg.sha512"
+    },
+    "Google.Apis.Storage.v1/1.59.0.2742": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JBOGNPcsCEtoSjfWgI6A+ry7UyIMmaV5whDYhEFo8bkply7ovPXW9Bd1bSx6Hrbw6lDyi7JLV7ETh0Zb0hailA==",
+      "path": "google.apis.storage.v1/1.59.0.2742",
+      "hashPath": "google.apis.storage.v1.1.59.0.2742.nupkg.sha512"
+    },
+    "Google.Cloud.Storage.V1/4.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qGhs3NeOfiAyDZ+oQYnOTLoiWJ/fNCkfhgQI3ZxlnlKEqxfNrC/k8MN9FZ86AO+nFu7ouBBDuNY7t63g09KbZQ==",
+      "path": "google.cloud.storage.v1/4.2.0",
+      "hashPath": "google.cloud.storage.v1.4.2.0.nupkg.sha512"
+    },
+    "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UcSjPsst+DfAdJGVDsu346FX0ci0ah+lw3WRtn18NUwEqRt70HaOQ7lI72vy3+1LxtqI3T5GWwV39rQSrCzAeg==",
+      "path": "microsoft.bcl.asyncinterfaces/6.0.0",
+      "hashPath": "microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
       "type": "package",
       "serviceable": true,
@@ -76,12 +239,26 @@
       "path": "microsoft.extensions.apidescription.server/3.0.0",
       "hashPath": "microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512"
     },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xlzi2IYREJH3/m6+lUrQlujzX8wDitm4QGnUu6kUXTQAWPuZY8i+ticFJbzfqaetLA6KR/rO6Ew/HuYD+bxifg==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/6.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+    },
     "Microsoft.OpenApi/1.2.3": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-Nug3rO+7Kl5/SBAadzSMAVgqDlfGjJZ0GenQrLywJ84XGKO0uRqkunz5Wyl0SDwcR71bAATXvSdbdzPrYRYKGw==",
       "path": "microsoft.openapi/1.2.3",
       "hashPath": "microsoft.openapi.1.2.3.nupkg.sha512"
+    },
+    "Newtonsoft.Json/13.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R2pZ3B0UjeyHShm9vG+Tu0EBb2lC8b0dFzV9gVn50ofHXh9Smjk6kTn7A/FdAsC8B5cKib1OnGYOXxRBz5XQDg==",
+      "path": "newtonsoft.json/13.0.2",
+      "hashPath": "newtonsoft.json.13.0.2.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.2.3": {
       "type": "package",

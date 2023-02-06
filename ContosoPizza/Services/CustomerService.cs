@@ -5,8 +5,8 @@ namespace ContosoPizza.Services;
 public static class CustomerService {
     //customer list
     static List<Customer> CustomerList { get; }
-    static string? authToken;
-    static string? currentToken;
+    static string authToken;
+    static string currentToken;
 
     static CustomerService() {
         //create default list
@@ -79,7 +79,7 @@ public static class CustomerService {
             CustomerList.RemoveAt(index);
             //TODO: implement a get by phone number method then utilize that get method to find the customer that way and just use a standard .Remove instead of RemoveAt
         } else {
-            //no access, do nothing
+            //no access
             return;
         }
     }
