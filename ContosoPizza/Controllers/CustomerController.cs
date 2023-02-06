@@ -25,6 +25,7 @@ public class CustomerController : ControllerBase {
         Guid master = Guid.Parse("0f8fad5b-d9cb-469f-a165-70867728950e");
         Guid saveGuid = Guid.Parse("0f8fad5b-d9cb-469f-a165-70867728950b");
         Guid grabGuid = Guid.Parse("0f8fad5b-d9cb-469f-a165-70867728950c");
+        Guid uploadGuid = Guid.Parse("0f8fad5b-d9cb-469f-a165-70867728950d");
         //master guid entered, give authorization
         if(input == master) {
             //set the current token to master allowing auth for everything
@@ -63,18 +64,33 @@ public class CustomerController : ControllerBase {
             //define our bucket
             string bucketName = "seth_bucket_test";
             //define what we are grabbing out of the bucket
-            string objectName = "quickstart-folder/ContosoPizza/SavedList_2.json";
+            string objectName = "quickstart-folder/ContosoPizza/SavedList.json";
             //local file path for our data to be saved
             string localPath = "Grabbed.json";
+            var fileStream = System.IO.File.Create("Grabbed.json");
 
             //create a storage client to provide operations to google cloud
             var storageClient = StorageClient.Create();
             //use our output file in order to download the object from the bucket
             using var outputFile = System.IO.File.OpenWrite(localPath);
             storageClient.DownloadObject(bucketName, objectName, outputFile);
-            //TODO: download every object from within this path of the bucket
             return NoContent();
-
+        }
+        else if (input == uploadGuid) {
+            //set credentials for the api to use to contact google cloud
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "C:\\Users\\Seth\\Documents\\apilearning\\credentials.json");
+            //define our bucket
+            string bucketName = "seth_bucket_test";
+            //create a storage client for sending operations to google cloud
+            StorageClient storageClient = StorageClient.Create();
+            //file name to upload
+            string fileToUpload = "SavedList.json";
+            using (var fileStream = new FileStream(fileToUpload, FileMode.Open, FileAccess.Read, FileShare.Read)) {
+            storageClient.UploadObject(bucketName, fileToUpload, "text/json", fileStream);
+            Console.WriteLine("Uploaded");
+            fileStream.Close();
+            return NoContent();
+            }
         }
         //they failed the login, bad request
         return BadRequest();
@@ -113,6 +129,7 @@ public class CustomerController : ControllerBase {
         CustomerService.Add(customer);
         return CreatedAtAction(nameof(Get), new { name = customer.Name }, customer);
     }
+
     //DELETE
     [HttpDelete("{name}")]
     public IActionResult Delete(string name) {
