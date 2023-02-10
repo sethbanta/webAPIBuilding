@@ -14,6 +14,7 @@ public class CustomerController : ControllerBase {
     //GET ALL
     [HttpGet]
     public ActionResult<List<Customer>> GetAll() => CustomerService.GetAllCustomers();
+
     [HttpGet("{name}")]
     public ActionResult<Customer?> Get(string name) => CustomerService.GetCustomer(name);
 
@@ -135,6 +136,16 @@ public class CustomerController : ControllerBase {
     [HttpDelete("{name}")]
     public IActionResult Delete(string name) {
         var existingCustomer = CustomerService.GetCustomer(name);
+        if(existingCustomer is null)
+            return NotFound();
+        CustomerService.Delete(existingCustomer);
+        return NoContent();
+    }
+
+
+    [HttpDelete("{number:int}")]
+    public IActionResult Delete(int number) {
+        var existingCustomer = CustomerService.GetCustomer(number);
         if(existingCustomer is null)
             return NotFound();
         CustomerService.Delete(existingCustomer);
