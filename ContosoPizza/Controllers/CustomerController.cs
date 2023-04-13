@@ -6,25 +6,20 @@ using Google.Apis.Auth.OAuth2;
 namespace ContosoPizza.Controllers;
 
 [ApiController]
-//[Route("[controller]")]
 public class CustomerController : ControllerBase {
     public CustomerController() {
     }
     //GET
     //GET ALL
-    //[HttpGet]
     [Route("customer/GetAllCustomers")]
     public ActionResult<List<Customer>> GetAll() => CustomerService.GetAllCustomers();
 
-    //[HttpGet("{name}")]
     [Route("customer/GetCustomerByName/{name}")]
     public ActionResult<Customer?> Get(string name) => CustomerService.GetCustomer(name);
 
-    //[HttpGet("{number:int}")]
     [Route("customer/GetCustomerById/{number}")]
     public ActionResult<Customer?> Get(int number) => CustomerService.GetCustomer(number);
 
-    //[HttpGet("{input:guid}")]
     [Route("customer/Login/{input:guid}")]
     public IActionResult Login(Guid input) {
         Guid master = Guid.Parse("0f8fad5b-d9cb-469f-a165-70867728950e");
@@ -101,8 +96,8 @@ public class CustomerController : ControllerBase {
         //they failed the login, bad request
         return BadRequest();
     }
+
     //PUT
-    //[HttpPut("{name}")]
     [Route("customer/UpdateByName/{name}")]
     public IActionResult Update(string name, Customer customer) {
             if(name != customer.Name) {
@@ -116,7 +111,6 @@ public class CustomerController : ControllerBase {
             return NoContent();
     }
 
-    //[HttpPut("{number:int}")]
     [Route("customer/UpdateById/{number:int}")]
     public IActionResult Update(int number, Customer customer) {
         //need to check if they are referencing the right customer by pulling the name WITH the number then check against the name of WHO they are modifying
@@ -131,8 +125,8 @@ public class CustomerController : ControllerBase {
         CustomerService.UpdateByNumber(customer);
         return NoContent();
     }
+
     //POST
-    //[HttpPost]
     [Route("customer/NewCustomer")]
     public IActionResult Create(Customer customer) {
         CustomerService.Add(customer);
@@ -140,7 +134,6 @@ public class CustomerController : ControllerBase {
     }
 
     //DELETE
-    //[HttpDelete("{name}")]
     [Route("customer/DeleteByName/{name}")]
     public IActionResult Delete(string name) {
         var existingCustomer = CustomerService.GetCustomer(name);
@@ -162,8 +155,6 @@ public class CustomerController : ControllerBase {
         return NoContent();
     }
 
-
-    //[HttpDelete("{number:int}")]
     [Route("customer/DeleteById/{number:int}")]
     public IActionResult Delete(int number) {
         var existingCustomer = CustomerService.GetCustomer(number);
