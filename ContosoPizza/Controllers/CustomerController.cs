@@ -150,6 +150,18 @@ public class CustomerController : ControllerBase {
         return NoContent();
     }
 
+    [Route("customer/DeleteByName/{name}/{input:guid}")]
+    public IActionResult Delete(string name, Guid input) {
+        Guid master = Guid.Parse("0f8fad5b-d9cb-469f-a165-70867728950e");
+        var existingCustomer = CustomerService.GetCustomer(name);
+        if(existingCustomer is null)
+            return NotFound();
+        if(input == master) {
+            CustomerService.DeleteFromApp(existingCustomer);
+        }
+        return NoContent();
+    }
+
 
     //[HttpDelete("{number:int}")]
     [Route("customer/DeleteById/{number:int}")]

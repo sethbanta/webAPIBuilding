@@ -84,6 +84,14 @@ public static class CustomerService {
         }
     }
 
+        public static void DeleteFromApp(Customer customer) {
+        string token = GetToken(currentToken);
+        //find which customer is being deleted
+        var index = CustomerList.FindIndex(c => c.PhoneNumber == customer.PhoneNumber);
+        //delete customer
+        CustomerList.RemoveAt(index);
+    }
+
     //Fake token stuff
     public static string GetToken(string token) {
         //correct token
