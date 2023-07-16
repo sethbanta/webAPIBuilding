@@ -52,6 +52,17 @@ public static class CustomerService {
         }
     }
 
+        public static void UpdateFromApp(Customer customer) {
+            //find which customer is being updated
+            var index = CustomerList.FindIndex(c => c.PhoneNumber == customer.PhoneNumber);
+            if (index is -1) {
+                return;
+            } else {
+            //update the customer
+            CustomerList[index] = customer;
+            }
+    }
+
     public static void UpdateByNumber(Customer customer) {
         string token = GetToken(currentToken);
         if (token == "CEO" || token == "Manager") {
