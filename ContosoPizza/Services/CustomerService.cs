@@ -78,8 +78,19 @@ public static class CustomerService {
             //employee access, do nothing
             return;
         }
-
     }
+
+    public static void UpdateByNumberFromApp(Customer customer) {
+            //In the put method itself we already check if they entered an existing customer
+            var index = CustomerList.FindIndex(c => c.Name == customer.Name);
+            //if somehow we didn't find them
+            if (index is -1) {
+                return; //do nothing
+            } else {
+                CustomerList[index] = customer;
+            }
+    }
+
     //DELETE
     public static void Delete(Customer customer) {
         string token = GetToken(currentToken);

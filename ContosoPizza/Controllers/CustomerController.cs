@@ -137,6 +137,21 @@ public class CustomerController : ControllerBase {
         return NoContent();
     }
 
+        [Route("customer/UpdateByIdFromApp/{number:int}")]
+    public IActionResult UpdateByNumberFromApp(int number, Customer customer) {
+        //need to check if they are referencing the right customer by pulling the name WITH the number then check against the name of WHO they are modifying
+        var existingCustomer = CustomerService.GetCustomer(number);
+        if(existingCustomer is null)
+            return NotFound();
+
+        if(existingCustomer.Name != customer.Name) {
+            return BadRequest();
+        }
+
+        CustomerService.UpdateByNumberFromApp(customer);
+        return NoContent();
+    }
+
     //POST
     [Route("customer/NewCustomer")]
     public IActionResult Create(Customer customer) {
