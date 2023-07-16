@@ -52,15 +52,19 @@ public static class CustomerService {
         }
     }
 
-        public static void UpdateFromApp(Customer customer) {
-            //find which customer is being updated
-            var index = CustomerList.FindIndex(c => c.PhoneNumber == customer.PhoneNumber);
-            if (index is -1) {
-                return;
-            } else {
+    public static void UpdateFromApp(string customerName, Customer customer) {
+        //find which customer is being updated
+        //for some reason when getting passed a name from the program it passes the text in as System.Windows.Forms.TextBox, Text: <name>
+        //used a substring of the value that is passed in order to cut out all the text that we dont need and only grab the actual customer name
+        var realCustomerName = customerName.Substring(36);
+        var index = CustomerList.FindIndex(c => c.Name == realCustomerName);
+        if (index is -1) {
+            Console.WriteLine("Customer not found");
+            return;
+        } else {
             //update the customer
             CustomerList[index] = customer;
-            }
+        }
     }
 
     public static void UpdateByNumber(Customer customer) {
@@ -80,15 +84,15 @@ public static class CustomerService {
         }
     }
 
-    public static void UpdateByNumberFromApp(Customer customer) {
-            //In the put method itself we already check if they entered an existing customer
-            var index = CustomerList.FindIndex(c => c.Name == customer.Name);
-            //if somehow we didn't find them
-            if (index is -1) {
-                return; //do nothing
-            } else {
-                CustomerList[index] = customer;
-            }
+    public static void UpdateByNumberFromApp(string customerNumber, Customer customer) {
+        //In the put method itself we already check if they entered an existing customer
+        var index = CustomerList.FindIndex(c => c.PhoneNumber.ToString() == customerNumber);
+        //if somehow we didn't find them
+        if (index is -1) {
+            return; //do nothing
+        } else {
+            CustomerList[index] = customer;
+        }
     }
 
     //DELETE

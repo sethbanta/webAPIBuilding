@@ -118,7 +118,7 @@ public class CustomerController : ControllerBase {
             if(existingCustomer is null) {
                 return NotFound();
             }
-            CustomerService.UpdateFromApp(customer);
+            CustomerService.UpdateFromApp(name, customer);
             return NoContent();
     }
 
@@ -143,12 +143,7 @@ public class CustomerController : ControllerBase {
         var existingCustomer = CustomerService.GetCustomer(number);
         if(existingCustomer is null)
             return NotFound();
-
-        if(existingCustomer.Name != customer.Name) {
-            return BadRequest();
-        }
-
-        CustomerService.UpdateByNumberFromApp(customer);
+        CustomerService.UpdateByNumberFromApp(number.ToString(), customer);
         return NoContent();
     }
 
