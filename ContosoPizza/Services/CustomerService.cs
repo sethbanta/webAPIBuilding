@@ -150,23 +150,65 @@ public static class CustomerService {
         List<Customer> tempList = CustomerService.GetAllCustomers();
         //begin a text writer for creating our file
         TextWriter tw = new StreamWriter("SavedList.json");
-        tw.Write("[");
+        tw.Write("[\n");
         //for every customer, add their info in JSON format with a comma at the end
         foreach(Customer c in tempList) {
-            tw.Write("{\"name\":\"" + c.Name + "\",\"phoneNumber\":" + c.PhoneNumber + ",\"age\":" + c.Age + ",\"favoritePizza\":\"" + c.FavoritePizza + "\"},");
+            tw.Write("{\"name\":\"" + c.Name + "\",\"phoneNumber\":" + c.PhoneNumber + ",\"age\":" + c.Age + ",\"favoritePizza\":\"" + c.FavoritePizza + "\"},\n");
         }
         tw.Close();
         //grab the new files contents
         byte[] contents = System.IO.File.ReadAllBytes("SavedList.json");
         //create a new file stream in order to delete the comma left on the end
         FileStream fsOut = System.IO.File.OpenWrite("SavedList.json");
-        fsOut.SetLength(fsOut.Length - 1);
+        fsOut.SetLength(fsOut.Length - 2);
         fsOut.Close();
         //open the file once again in order to append the ending bracket on the file
         using(StreamWriter sw = System.IO.File.AppendText("SavedList.json")) {
-            sw.Write("]");
+            sw.Write("\n]");
         }
         Console.WriteLine("Saved");
+    }
+
+    public static void importList() {
+        //clear the current list of customers
+        CustomerList.Clear();
+        //create reader for parsing the text from the json file
+        StreamReader streamReader = new StreamReader("SavedList.json");
+        //read the first line
+        var line = streamReader.ReadLine();
+        //create a blank customer tempList
+        List<Customer> tempList = new List<Customer> {};
+        //first line should always be [
+        if (line == "[") {
+            //bring in the second line, this should be actual data
+            line = streamReader.ReadLine();
+            //while not the end of the file
+            while (line != "]") {
+                //grab the index of the , used to separate json objects within the file
+                var commaIndex = line?.LastIndexOf(",");
+                //to be honest i dont know why this is needed. for some reason on the last object of the json file, it still tries to remove a comma that is nonexistant
+                //to work around this i add replace the } character with a , at the end of every line
+                //this means that every line is going to have one extra comma and will have extra values within the split array, but for the last line in the file it allows it to function properly and have the normal amount splits
+                //without this line the last line has 3 values in the array when the normal is 5, adding one comma in this spot adds two values in the array
+                line = line?.Replace("}",",");
+                line = line?.Replace("{","");
+                var splitLine = line?.Split(",");
+                var splitName = splitLine?[0].Split(":");
+                var lineName = splitName?[1];
+                lineName = lineName?.Replace("\"","");
+                var splitNumber = splitLine?[1].Split(":");
+                var linePhone = Convert.ToInt32(splitNumber?[1]);
+                var splitAge = splitLine?[2].Split(":");
+                var lineAge = Convert.ToInt32(splitAge?[1]);
+                var splitPizza = splitLine?[3].Split(":");
+                var linePizza = splitPizza?[1];
+                linePizza = linePizza?.Replace("\"","");
+                Customer newCustomer = new Customer { Name = lineName, PhoneNumber = linePhone, Age = lineAge, FavoritePizza = linePizza};
+                CustomerList.Add(newCustomer);
+                line = streamReader.ReadLine();
+            }
+        }
+
     }
 
 }

@@ -190,4 +190,10 @@ public class CustomerController : ControllerBase {
         CustomerService.saveList();
         return NoContent();
     }
+
+    [Route("customer/import")]
+    public IActionResult import() {
+        CustomerService.importList();
+        return NoContent();
+    }
 }
