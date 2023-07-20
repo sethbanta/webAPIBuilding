@@ -143,4 +143,30 @@ public static class CustomerService {
     public static void SetToken() {
         currentToken = authToken;
     }
+
+    //method to save all of the current data to a list in json format, to be loaded next time the program is launched
+    public static void saveList() {
+        //bring in the list of all the customers
+        List<Customer> tempList = CustomerService.GetAllCustomers();
+        //begin a text writer for creating our file
+        TextWriter tw = new StreamWriter("SavedList.json");
+        tw.Write("[");
+        //for every customer, add their info in JSON format with a comma at the end
+        foreach(Customer c in tempList) {
+            tw.Write("{\"name\":\"" + c.Name + "\",\"phoneNumber\":" + c.PhoneNumber + ",\"age\":" + c.Age + ",\"favoritePizza\":\"" + c.FavoritePizza + "\"},");
+        }
+        tw.Close();
+        //grab the new files contents
+        byte[] contents = System.IO.File.ReadAllBytes("SavedList.json");
+        //create a new file stream in order to delete the comma left on the end
+        FileStream fsOut = System.IO.File.OpenWrite("SavedList.json");
+        fsOut.SetLength(fsOut.Length - 1);
+        fsOut.Close();
+        //open the file once again in order to append the ending bracket on the file
+        using(StreamWriter sw = System.IO.File.AppendText("SavedList.json")) {
+            sw.Write("]");
+        }
+        Console.WriteLine("Saved");
+    }
+
 }

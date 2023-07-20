@@ -184,4 +184,10 @@ public class CustomerController : ControllerBase {
         CustomerService.Delete(existingCustomer);
         return NoContent();
     }
+
+    [Route("customer/save")]
+    public IActionResult saveToFile() {
+        CustomerService.saveList();
+        return NoContent();
+    }
 }
