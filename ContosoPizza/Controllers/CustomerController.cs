@@ -122,6 +122,16 @@ public class CustomerController : ControllerBase {
             return NoContent();
     }
 
+    [Route("customer/UpdateByNameFromMVC/{name}")]
+    public IActionResult UpdateFromMVC(string name, Customer customer) {
+            var existingCustomer = Get(name);
+            if(existingCustomer is null) {
+                return NotFound();
+            }
+            CustomerService.UpdateFromMVC(name, customer);
+            return NoContent();
+    }
+
     [Route("customer/UpdateById/{number:int}")]
     public IActionResult Update(int number, Customer customer) {
         //need to check if they are referencing the right customer by pulling the name WITH the number then check against the name of WHO they are modifying
@@ -150,8 +160,14 @@ public class CustomerController : ControllerBase {
     //POST
     [Route("customer/NewCustomer")]
     public IActionResult Create(Customer customer) {
-        CustomerService.Add(customer);
-        return CreatedAtAction(nameof(Get), new { name = customer.Name }, customer);
+        var potentialCustomer = CustomerService.GetCustomer(customer.PhoneNumber);
+        if(potentialCustomer == null) {
+            CustomerService.Add(customer);
+            return CreatedAtAction(nameof(Get), new { name = customer.Name }, customer);
+        } else {
+            return Accepted();
+        }
+
     }
 
     //DELETE

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UdTGIr5EoL/Db6PicE2g+Th28RQd9zV8gMxkuLu1RuJngCONLAdleCuvvEK9QO9yIKExDvpAVM/WVNGikl31BA==",
+  "dgSpecHash": "FluZVs2j14epV7qdvfVnbKQ27CHTGWkS5VobKz9pqlSHdfaUDe+vyzizpTHjIzeb6tcURBrAhBtfmpub0+FO9g==",
   "success": true,
   "projectFilePath": "C:\\Users\\decay\\OneDrive\\Documents\\GitHub\\webAPIBuilding\\ContosoPizza\\ContosoPizza.csproj",
   "expectedPackageFiles": [
@@ -19,11 +19,7 @@
     "C:\\Users\\decay\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\decay\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\decay\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
-    "C:\\Users\\decay\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
-    "C:\\Users\\decay\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.20\\microsoft.netcore.app.ref.6.0.20.nupkg.sha512",
-    "C:\\Users\\decay\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.20\\microsoft.windowsdesktop.app.ref.6.0.20.nupkg.sha512",
-    "C:\\Users\\decay\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.20\\microsoft.aspnetcore.app.ref.6.0.20.nupkg.sha512",
-    "C:\\Users\\decay\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.20\\microsoft.netcore.app.host.win-x64.6.0.20.nupkg.sha512"
+    "C:\\Users\\decay\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
   ],
   "logs": []
 }

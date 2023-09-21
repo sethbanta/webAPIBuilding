@@ -67,11 +67,6 @@ C:\Users\decay\OneDrive\Documents\GitHub\webAPIBuilding\ContosoPizza\obj\Debug\n
 C:\Users\decay\OneDrive\Documents\GitHub\webAPIBuilding\ContosoPizza\obj\Debug\net6.0\ContosoPizza.csproj.CoreCompileInputs.cache
 C:\Users\decay\OneDrive\Documents\GitHub\webAPIBuilding\ContosoPizza\obj\Debug\net6.0\ContosoPizza.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\decay\OneDrive\Documents\GitHub\webAPIBuilding\ContosoPizza\obj\Debug\net6.0\ContosoPizza.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\decay\OneDrive\Documents\GitHub\webAPIBuilding\ContosoPizza\obj\Debug\net6.0\staticwebassets\msbuild.ContosoPizza.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\decay\OneDrive\Documents\GitHub\webAPIBuilding\ContosoPizza\obj\Debug\net6.0\staticwebassets\msbuild.build.ContosoPizza.props
-C:\Users\decay\OneDrive\Documents\GitHub\webAPIBuilding\ContosoPizza\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.ContosoPizza.props
-C:\Users\decay\OneDrive\Documents\GitHub\webAPIBuilding\ContosoPizza\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.ContosoPizza.props
-C:\Users\decay\OneDrive\Documents\GitHub\webAPIBuilding\ContosoPizza\obj\Debug\net6.0\staticwebassets.pack.json
 C:\Users\decay\OneDrive\Documents\GitHub\webAPIBuilding\ContosoPizza\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\decay\OneDrive\Documents\GitHub\webAPIBuilding\ContosoPizza\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\decay\OneDrive\Documents\GitHub\webAPIBuilding\ContosoPizza\obj\Debug\net6.0\scopedcss\bundle\ContosoPizza.styles.css

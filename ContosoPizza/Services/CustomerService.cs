@@ -67,6 +67,21 @@ public static class CustomerService {
         }
     }
 
+    //This method is called to update from my Python MVC
+    //The update method above gets a System.Windows.Forms.TextBox, Text: <name> input when called from the csharp app
+    //Separated the methods that way to avoid breaking the other application
+    public static void UpdateFromMVC(string customerName, Customer customer) {
+        //find which customer is being updated
+        var index = CustomerList.FindIndex(c => c.Name == customerName);
+        if (index is -1) {
+            Console.WriteLine("Customer not found");
+            return;
+        } else {
+            //update the customer
+            CustomerList[index] = customer;
+        }
+    }
+
     public static void UpdateByNumber(Customer customer) {
         string token = GetToken(currentToken);
         if (token == "CEO" || token == "Manager") {
