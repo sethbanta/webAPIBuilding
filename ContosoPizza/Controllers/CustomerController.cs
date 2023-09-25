@@ -17,8 +17,8 @@ public class CustomerController : ControllerBase {
     [Route("customer/GetCustomerByName/{name}")]
     public ActionResult<Customer?> Get(string name) => CustomerService.GetCustomer(name);
 
-    [Route("customer/GetCustomerById/{number}")]
-    public ActionResult<Customer?> Get(int number) => CustomerService.GetCustomer(number);
+    [Route("customer/GetCustomerById/{number:long}")]
+    public ActionResult<Customer?> Get(long number) => CustomerService.GetCustomer(number);
 
     [Route("customer/Login/{input:guid}")]
     public IActionResult Login(Guid input) {
@@ -132,8 +132,8 @@ public class CustomerController : ControllerBase {
             return NoContent();
     }
 
-    [Route("customer/UpdateById/{number:int}")]
-    public IActionResult Update(int number, Customer customer) {
+    [Route("customer/UpdateById/{number:long}")]
+    public IActionResult Update(long number, Customer customer) {
         //need to check if they are referencing the right customer by pulling the name WITH the number then check against the name of WHO they are modifying
         var existingCustomer = CustomerService.GetCustomer(number);
         if(existingCustomer is null)
@@ -147,8 +147,8 @@ public class CustomerController : ControllerBase {
         return NoContent();
     }
 
-        [Route("customer/UpdateByIdFromApp/{number:int}")]
-    public IActionResult UpdateByNumberFromApp(int number, Customer customer) {
+        [Route("customer/UpdateByIdFromApp/{number:long}")]
+    public IActionResult UpdateByNumberFromApp(long number, Customer customer) {
         //need to check if they are referencing the right customer by pulling the name WITH the number then check against the name of WHO they are modifying
         var existingCustomer = CustomerService.GetCustomer(number);
         if(existingCustomer is null)
@@ -192,8 +192,8 @@ public class CustomerController : ControllerBase {
         return NoContent();
     }
 
-    [Route("customer/DeleteById/{number:int}")]
-    public IActionResult Delete(int number) {
+    [Route("customer/DeleteById/{number:long}")]
+    public IActionResult Delete(long number) {
         var existingCustomer = CustomerService.GetCustomer(number);
         if(existingCustomer is null)
             return NotFound();

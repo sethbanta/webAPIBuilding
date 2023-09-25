@@ -33,7 +33,7 @@ public static class CustomerService {
     public static List<Customer> GetAllCustomers() => CustomerList;
     public static Customer? GetCustomer(string name) => CustomerList.FirstOrDefault(c => c.Name == name);
 
-    public static Customer? GetCustomer(int number) => CustomerList.FirstOrDefault(c => c.PhoneNumber == number);
+    public static Customer? GetCustomer(long number) => CustomerList.FirstOrDefault(c => c.PhoneNumber == number);
     //UPDATE
     public static void Update(Customer customer) {
         string token = GetToken(currentToken);
