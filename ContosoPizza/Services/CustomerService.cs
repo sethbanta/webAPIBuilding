@@ -70,15 +70,24 @@ public static class CustomerService {
     //This method is called to update from my Python MVC
     //The update method above gets a System.Windows.Forms.TextBox, Text: <name> input when called from the csharp app
     //Separated the methods that way to avoid breaking the other application
-    public static void UpdateFromMVC(string customerName, Customer customer) {
+    public static int UpdateFromMVC(string customerName, Customer customer) {
         //find which customer is being updated
         var index = CustomerList.FindIndex(c => c.Name == customerName);
         if (index is -1) {
             Console.WriteLine("Customer not found");
-            return;
+            return 0;
         } else {
             //update the customer
-            CustomerList[index] = customer;
+            var check = CustomerList.FindIndex(c => c.PhoneNumber == customer.PhoneNumber);
+            if (check is -1) {
+                //there was no customer with a matching phone number, so update
+                CustomerList[index] = customer;
+                //return 1 to the controller to indicate we updated
+                return 1;
+            } else {
+                //do nothing, return a 0 to indicate to the controller, that we didnt update
+                return 0;
+            }
         }
     }
 
@@ -99,14 +108,24 @@ public static class CustomerService {
         }
     }
 
-    public static void UpdateByNumberFromApp(string customerNumber, Customer customer) {
+    public static int UpdateByNumberFromApp(string customerNumber, Customer customer) {
         //In the put method itself we already check if they entered an existing customer
         var index = CustomerList.FindIndex(c => c.PhoneNumber.ToString() == customerNumber);
         //if somehow we didn't find them
         if (index is -1) {
-            return; //do nothing
+            return 0; //do nothing
         } else {
-            CustomerList[index] = customer;
+            //if the number being updated
+            if(customerNumber != customer.PhoneNumber.ToString()) {
+                //check to see if the number being updated to, is already existing within the API
+                var check = CustomerList.FindIndex(c => c.PhoneNumber.ToString() == customer.PhoneNumber.ToString());
+                if(check is -1) {
+                    //the number didnt exist, update the customer
+                    CustomerList[index] = customer;
+                    return 1;
+                }
+            }
+            return 0;
         }
     }
 

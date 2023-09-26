@@ -128,8 +128,14 @@ public class CustomerController : ControllerBase {
             if(existingCustomer is null) {
                 return NotFound();
             }
-            CustomerService.UpdateFromMVC(name, customer);
-            return NoContent();
+            int updated = CustomerService.UpdateFromMVC(name, customer);
+            if(updated == 1) {
+                //no content is returned, program will handle as if it updated
+                return NoContent();
+            } else {
+                //accepted is returned, this means the request came through but wasnt handled, indicating no update
+                return Accepted();
+            }
     }
 
     [Route("customer/UpdateById/{number:long}")]
@@ -153,8 +159,12 @@ public class CustomerController : ControllerBase {
         var existingCustomer = CustomerService.GetCustomer(number);
         if(existingCustomer is null)
             return NotFound();
-        CustomerService.UpdateByNumberFromApp(number.ToString(), customer);
-        return NoContent();
+        int updated = CustomerService.UpdateByNumberFromApp(number.ToString(), customer);
+        if(updated == 1) {
+            return NoContent();
+        } else {
+            return Accepted();
+        }
     }
 
     //POST
