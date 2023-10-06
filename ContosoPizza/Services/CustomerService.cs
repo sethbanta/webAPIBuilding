@@ -77,16 +77,21 @@ public static class CustomerService {
             Console.WriteLine("Customer not found");
             return 0;
         } else {
-            //update the customer
-            var check = CustomerList.FindIndex(c => c.PhoneNumber == customer.PhoneNumber);
-            if (check is -1) {
-                //there was no customer with a matching phone number, so update
-                CustomerList[index] = customer;
-                //return 1 to the controller to indicate we updated
-                return 1;
+            //if the number being updated
+            var customerNumber = GetCustomer(customerName).PhoneNumber.ToString();
+            if(customerNumber != customer.PhoneNumber.ToString()) {
+                //check to see if the number being updated to, is already existing within the API
+                var check = CustomerList.FindIndex(c => c.PhoneNumber.ToString() == customer.PhoneNumber.ToString());
+                if(check is -1) {
+                    //the number didnt exist, update the customer
+                    CustomerList[index] = customer;
+                    return 1;
+                } else {
+                    return 0;
+                }
             } else {
-                //do nothing, return a 0 to indicate to the controller, that we didnt update
-                return 0;
+                CustomerList[index] = customer;
+                return 1;
             }
         }
     }
@@ -123,9 +128,13 @@ public static class CustomerService {
                     //the number didnt exist, update the customer
                     CustomerList[index] = customer;
                     return 1;
+                } else {
+                    return 0;
                 }
+            } else {
+                CustomerList[index] = customer;
+                return 1;
             }
-            return 0;
         }
     }
 
